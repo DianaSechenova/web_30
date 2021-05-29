@@ -17,12 +17,12 @@
             <img class="card-img-top" src="{{$post->image}}" alt="Card image cap">
             <div class="card-body">
                 <h2 class="card-title">{{$post->title}}</h2>
-                <p class="card-text">{{$post->body}}</p>
-                <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                <p class="card-text">{{mb_substr($post->body, 0, 200)}} ...</p>
+                <a href="{{route('single_post', $post->id)}}" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
                 Posted on {{$post->created_at}} by
-                <a href="#">AAA NNNNNN</a>
+                <a href="{{route('post_by_author', $post->author->key)}}">{{$post->author->name}}</a>
             </div>
         </div>
         @endforeach
