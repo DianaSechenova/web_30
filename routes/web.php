@@ -28,4 +28,6 @@ Route::get('/author/{key}',Controllers\PostByAuthorController::class )->name('po
 
 Route::get('/post/{id}',Controllers\SinglePostController::class)->name('single_post');
 
+Route::get('/category/{key}',Controllers\PostByCategoryController::class)->name('post_by_category');
+
 

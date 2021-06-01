@@ -6,10 +6,11 @@
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
-        <h1 class="my-4">OUR CONTACTS</h1>
+        <h1 class="my-4">Наши контакты:</h1>
         <ul>
-            <li>phone: +380 67 333 44 55</li>
-            <li>email: user@gmail.com</li>
+            @foreach($contacts as $contact)
+                <li>{{$contact->title}}: {{$contact->value}}</li>
+            @endforeach
         </ul>
     </div>
 @endsection

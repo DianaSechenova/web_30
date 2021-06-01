@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class SimplePageController extends Controller
@@ -11,7 +12,8 @@ class SimplePageController extends Controller
     }
 
     public function  contacts(){
-        return view('contacts');
+//        $contacts = Contact::all();
+        return view('contacts', ['contacts'=>Contact::all()]);
     }
 
     public function  services(){

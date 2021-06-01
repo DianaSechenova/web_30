@@ -1,27 +1,27 @@
 @extends('layout')
 
-@section('title', $author->name)
+@section('title', $category->title)
 
 @section('content')
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
 
-        <h1 class="my-4">Все посты автора
-            <p style="color: dodgerblue;">{{$author->name}}</p>
+        <h1 class="my-4">Все посты категории <small style="color: dodgerblue;">{{$category->title}}</small>
         </h1>
 
-    @foreach($author->posts as $post)
+    @foreach($category->post as $post)
         <!-- Blog Post -->
             <div class="card mb-4">
                 <img class="card-img-top" src="{{$post->image}}" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">{{$post->title}}</h2>
                     <p class="card-text">{{mb_substr($post->body, 0, 200)}} ...</p>
-                    <a href="{{route('single_post', $post->id)}}" class="btn btn-primary"> &rarr;</a>
+                    <a href="{{route('single_post', $post->id)}}" class="btn btn-primary">Читать далее &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
-                    Опубликовано {{date('d-m-Y',strtotime($post->created_at))}}
+                    Опубликовано {{date('d F Y в G:i',strtotime($post->created_at))}} <div style="float: right">Автор
+                    <a href="{{route('post_by_author', $post->author->key)}}">{{$post->author->name}}</a></div>
                 </div>
                 <div class="card-footer text-muted">
                     Катигории:

@@ -18,8 +18,8 @@
                     <p class="card-text">{{$post->body}}</p>
                 </div>
                 <div class="card-footer text-muted">
-                    Posted on {{$post->created_at}} by
-                    <a href="{{route('post_by_author', $post->author->key)}}">{{$post->author->name}}</a>
+                    Опубликовано {{date('d F Y в G:i',strtotime($post->created_at))}} <div style="float: right">Автор
+                    <a href="{{route('post_by_author', $post->author->key)}}">{{$post->author->name}}</a></div>
                 </div>
             </div>
 

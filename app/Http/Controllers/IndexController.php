@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function __invoke(){
-        $posts = Post::orderBy('id', 'DESC')->limit(5)->get();
+        $posts = Post::orderBy('id', 'DESC')->paginate(5);
         return view('home', ['posts' => $posts]);
     }
 }
