@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 
@@ -29,18 +29,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('index')}}">Home
+                    <a class="nav-link" href="{{route('index')}}">Домой
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('about')}}">About</a>
+                    <a class="nav-link" href="{{route('about')}}">О нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('services')}}">Services</a>
+                    <a class="nav-link" href="{{route('services')}}">Услуги</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('contacts')}}">Contact</a>
+                    <a class="nav-link" href="{{route('contacts')}}">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">
+                        @if(\Illuminate\Support\Facades\Auth::check()){{\Illuminate\Support\Facades\Auth::user()->name}}
+                        @else Войти @endif
+                    </a>
                 </li>
             </ul>
         </div>
@@ -113,9 +119,14 @@
             </div>
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
-                <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                <h5 class="card-header">Мы в соцсетях</h5>
+                <div class="card-body" style="display: flex; justify-content: space-around;">
+                    <a href="#"><img src="/public/icon/i.png"></a>
+                    <a href="#"><img src="/public/icon/f.png"></a>
+                    <a href="#"><img src="/public/icon/t.png"></a>
+                    <a href="#"><img src="/public/icon/g.png"></a>
+
+                    {{--                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!--}}
                 </div>
             </div>
 

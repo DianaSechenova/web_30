@@ -25,7 +25,7 @@ class PostFactory extends Factory
             'author_id' =>$this->faker->numberBetween(1, 10),
             'title' => $this->faker->text(40),
             'body' => $this->faker->text(1000),
-            'image' => $this->faker->imageUrl(750, 300)
+            'images' => $this->faker->imageUrl(750, 300)
         ];
     }
 }
