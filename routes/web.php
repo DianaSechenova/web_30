@@ -34,11 +34,17 @@ Route::get('/category/{key}',Controllers\PostByCategoryController::class)->name(
 
 //Admin
 Route::get('/admin/add_post', 'App\Http\Controllers\AdminPostsController@add')->name('add_post_get');
-Route::post('/admin/add_post', 'App\Http\Controllers\AdminPostsController@save')->name('add_post_save');
+Route::post('/admin/add_post', 'App\Http\Controllers\AdminPostsController@save')->name('add_post_post');
 
 Route::get('/admin/edit_post/{id}', 'App\Http\Controllers\AdminPostsController@edit')->name('edit_post_get');
-Route::post('/admin/edit_post/{id}', 'App\Http\Controllers\AdminPostsController@edit_save')->name('edit_post_save');
+Route::post('/admin/edit_post/{id}', 'App\Http\Controllers\AdminPostsController@edit_save')->name('edit_post_post');
 
+Route::get('/admin/admin_panel', 'App\Http\Controllers\AdminPostsController@delete')->name('admin_panel_get');
+Route::delete('/admin/admin_panel', 'App\Http\Controllers\AdminPostsController@delete')->name('admin_panel_post');
+
+Route::get('/404', function (){
+    return view('404');
+})->name('404');
 //Auth
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -54,7 +54,6 @@
                     <li class="page-item"><a class="page-link" href="{{$posts->nextPageUrl()}}">&rarr; </a></li>
                     <li class="page-item"><a class="page-link" href="?page={{$posts->lastPage()}}">Конец</a></li>
                 @endif
-{{--                    {{$posts->links()}}--}}
         </ul>
     </div>
 

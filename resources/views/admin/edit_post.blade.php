@@ -7,7 +7,7 @@
     <!-- Blog Entries Column -->
     <div class="col-md-8">
 
-        <h1 class="my-4">Добавить пост</h1>
+        <h1 class="my-4">Редактировать пост № {{$post->id}}</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -49,14 +49,15 @@
 {{--                </div>--}}
 {{--                <br>--}}
                 <div class="flex col-3">
+                    <input type="hidden" name="id" value="{{$post->id}}">
                     <label style="padding-bottom: 18px; width: 600px;">
-                        <input style="width: 600px; padding: 8px" type="text" placeholder="title" name="title">
+                        <input style="width: 600px; padding: 8px" type="text" placeholder="title" name="title" value="{{$post->title}}">
                     </label>
                     <input style="padding-bottom: 18px;" type="file" name="image">
                     <label >
-                        <code> <textarea style="padding-bottom: 18px; width: 600px; height: 300px;" class="form-control" name="body"></textarea></code>
+                        <code> <textarea style="padding-bottom: 18px; width: 600px; height: 300px;" class="form-control" name="body">{{$post->body}}</textarea></code>
                     </label>
-                    <button type="submit" class="btn-blue btn btn-primary"> Добавить</button>
+                    <button type="submit" class="btn-blue btn btn-primary"> Обновить</button>
                 </div>
             </form>
             <br>

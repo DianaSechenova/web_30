@@ -16,7 +16,9 @@ class Author extends Model
 
     public function show_authors()
     {
-        $authors =  Author::orderBy('count_posts', 'DESC')->limit(5)->get();
+        $authors =  Author::orderBy('count_posts', 'DESC')
+            ->limit(5)
+            ->get();
 
         $count = Author::all()->count();
         return $authors;
