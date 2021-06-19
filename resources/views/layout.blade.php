@@ -124,14 +124,20 @@
             </div>
             <!-- Side Widget -->
             <div class="card my-4">
+{{--                @inject('networks', "App\Models\Network")--}}
                 <h5 class="card-header">Мы в соцсетях</h5>
                 <div class="card-body" style="display: flex; justify-content: space-around;">
-                    <a href="#"><img src="/public/icon/i.png"></a>
-                    <a href="#"><img src="/public/icon/f.png"></a>
-                    <a href="#"><img src="/public/icon/t.png"></a>
-                    <a href="#"><img src="/public/icon/g.png"></a>
+                    <a href="#"><img src="/icon/i.png"></a>
+                    <a href="#"><img src="/icon/f.png"></a>
+                    <a href="#"><img src="/icon/t.png"></a>
+                    <a href="#"><img src="/icon/g.png"></a>
 
-                    {{--                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!--}}
+{{--                    <ul>--}}
+{{--                    @foreach($networks as $network)--}}
+{{--                        <li>{{$network->name}}</li>--}}
+{{--                        <li>{{$network->link}}</li>--}}
+{{--                    @endforeach--}}
+{{--                    </ul>--}}
                 </div>
             </div>
 

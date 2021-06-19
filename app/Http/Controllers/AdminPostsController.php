@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Category;
-//use App\Models\Post;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +46,14 @@ class AdminPostsController extends Controller
 
                 $post->category()->sync($request->input('category_id'), false);
                 $post->category()->getRelated();
+                $log = new Logger('new_log');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
+                $log->info('Monolog: Пост № '. $post->id .' был добавлен пользователем ' . Auth::user()->name);
 
+                $k_log = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../../Logs');
+                $k_log->info('Katzgrau: Пост № '. $post->id .' был добавлен пользователем ' . Auth::user()->name );
                 return redirect()->route('single_post', $post->id);
+
             }
         }else{
             return redirect()->route('index');
@@ -86,6 +93,11 @@ class AdminPostsController extends Controller
                     $post->image = 'http://localhost:8888/images' . $imageName;
                 }
                 $post->save();
+                $log = new Logger('new_log');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
+                $log->info('Monolog: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name);
+                $k_log = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../../Logs');
+                $k_log->info('Katzgrau: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name );
                 return redirect()->route('admin_panel_get');
             }
         }else{
@@ -98,9 +110,14 @@ class AdminPostsController extends Controller
             if ($request->method() == 'DELETE') {
                 $post = Post::find($request->input('id'));
                 $post->delete();
+                $log = new Logger('new_log');
+                $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
+                $log->info('Monolog: Пост № '. $post->id .' был удален пользователем ' . Auth::user()->name);
+                $k_log = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../../Logs');
+                $k_log->info('Katzgrau: Пост № '. $post->id .' был удален пользователем ' . Auth::user()->name );
                 return back();
             } else {
-                return view('admin.admin_panel', ['post' => Post::orderBy('updated_at', 'DESC')->paginate(5)]);
+                return view('admin.admin_panel', ['posts' => Post::orderBy('updated_at', 'DESC')->paginate(5)]);
             }
 
         }else{

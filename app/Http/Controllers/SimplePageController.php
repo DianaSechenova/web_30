@@ -12,7 +12,6 @@ class SimplePageController extends Controller
     }
 
     public function  contacts(){
-//        $contacts = Contact::all();
         return view('contacts', ['contacts'=>Contact::all()]);
     }
 

@@ -34,8 +34,6 @@
                 </select>
                 <br>
                 <br>
-                <br>
-                <br>
                 <p style="font-size: 20px;">Выберите категорию:</p>
                 <div style="display: flex; flex-direction: column;">
                     @foreach($categories as $category)
