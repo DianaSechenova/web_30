@@ -70,15 +70,13 @@
 
             <!-- Search Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-                    </div>
-                </div>
+                <h5 class="card-header">Курсы валют</h5>
+{{--                <div class="card-body">--}}
+                    <ul class="list-group list-group-flush">
+                        @inject('currency', "App\Models\Currency")
+                        {{$currency->get_currency()}}
+                    </ul>
+{{--                </div>--}}
             </div>
 
             <!-- Categories Widget -->
