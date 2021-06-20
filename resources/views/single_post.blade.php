@@ -27,6 +27,9 @@
                         <a style="padding-right: 10px;" href="{{route('post_by_category', $c->key)}}">{{$c->title}}</a>
                     @endforeach
                 </div>
+                <div class="card-footer text-muted">
+                    Просмотры:{{$post->viewing}}
+                </div>
             </div>
         @if(\Illuminate\Support\Facades\Auth::check())
             <hr>
@@ -51,8 +54,5 @@
         @else
         <p>Зарегестрируйтесь, и оставляйте комментарии!</p>
             @endif
-
-
-
     </div>
 @endsection

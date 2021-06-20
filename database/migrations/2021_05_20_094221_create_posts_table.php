@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->text('images');
+            $table->integer('viewing')->default(0);
             $table->timestamps();
         });
     }

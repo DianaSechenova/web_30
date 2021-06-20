@@ -30,7 +30,9 @@
                     <a style="padding-right: 10px;" href="{{route('post_by_category', $c->key)}}">{{$c->title}}</a>
                 @endforeach
             </div>
-
+            <div class="card-footer text-muted">
+                Просмотры:{{$post->viewing}}
+            </div>
         </div>
         @endforeach
 
