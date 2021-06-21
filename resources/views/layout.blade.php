@@ -29,15 +29,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('index')}}">Домой
+                    <a class="nav-link" href="/">Домой
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('about')}}">О нас</a>
+                    <a class="nav-link" href="/about">О нас</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('services')}}">Услуги</a>
+                    <a class="nav-link" href="/services">Услуги</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contacts')}}">Контакты</a>
