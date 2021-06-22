@@ -150,6 +150,15 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
+        <p class="m-0 text-center text-white">Подпишись на нашу рассылку</p>
+
+        <div class="m-0 text-center text-white">
+            <form method="post" action="{{route('subscription')}}">
+                @csrf
+                <input type="text" name="mail">
+                <input type="submit" value="Подписаться">
+            </form>
+        </div>
         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
     </div>
     <!-- /.container -->
