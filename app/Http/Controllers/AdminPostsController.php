@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Category;
+use Illuminate\Support\Facades\Session;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use App\Models\Post;
@@ -52,6 +53,8 @@ class AdminPostsController extends Controller
 
                 $k_log = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../../Logs');
                 $k_log->info('Katzgrau: Пост № '. $post->id .' был добавлен пользователем ' . Auth::user()->name );
+
+                Session::flash('flash', 'Пост №'. $post->id . ' успешно добавлен!');
                 return redirect()->route('single_post', $post->id);
 
             }
@@ -90,17 +93,21 @@ class AdminPostsController extends Controller
                 if($image){
                     $imageName = $image->getClientOriginalName();
                     $image->move('images', $imageName);
-                    $post->image = 'http://localhost:8888/images' . $imageName;
+                    $post->image = 'http://localhost:8888/images/' . $imageName;
                 }
                 $post->save();
                 $log = new Logger('new_log');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
                 $log->info('Monolog: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name);
                 $k_log = new \Katzgrau\KLogger\Logger(__DIR__ . '/../../../Logs');
-                $k_log->info('Katzgrau: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name );
+                $k_log->info('Katzgrau: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name);
+
+                Session::flash('flash', 'Пост №'. $post->id . ' успешно отредактирован и сохранен!');
+
                 return redirect()->route('admin_panel_get');
             }
         }else{
+
             return redirect()->route('404');
         }
     }
@@ -117,7 +124,7 @@ class AdminPostsController extends Controller
                 $k_log->info('Katzgrau: Пост № '. $post->id .' был удален пользователем ' . Auth::user()->name );
                 return back();
             } else {
-                return view('admin.admin_panel', ['posts' => Post::orderBy('updated_at', 'DESC')->paginate(5)]);
+                return view('admin.admin_panel', ['posts' => Post::orderBy('updated_at', 'DESC')->paginate(8)]);
             }
 
         }else{

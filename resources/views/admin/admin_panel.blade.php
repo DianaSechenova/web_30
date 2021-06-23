@@ -6,6 +6,11 @@
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
+        @if(\Illuminate\Support\Facades\Session::has('flash'))
+            <br>
+            <h2><mark>{{\Illuminate\Support\Facades\Session::get('flash')}}</mark></h2>
+            <br>
+        @endif
         <a class="btn btn-outline-dark"  style="border: 1px solid gray; padding: 6px 12px; display: inline; box-shadow: 0px 0px 10px grey; font-size: 28px;
 " href="{{route('add_post_get')}}" class="nav-link">Добавить пост</a>
         <h1 class="my-4">Удаление и Редактирование постов</h1>

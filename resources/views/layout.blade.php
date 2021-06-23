@@ -155,7 +155,7 @@
         <div class="m-0 text-center text-white">
             <form method="post" action="{{route('subscription')}}">
                 @csrf
-                <input type="text" name="mail">
+                <input type="email" name="mail">
                 <input type="submit" value="Подписаться">
             </form>
         </div>

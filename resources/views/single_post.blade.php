@@ -7,6 +7,11 @@
     <!-- Blog Entries Column -->
     <div class="col-md-8">
 
+        @if(\Illuminate\Support\Facades\Session::has('flash'))
+            <br>
+            <h2><mark>{{\Illuminate\Support\Facades\Session::get('flash')}}</mark></h2>
+            <br>
+            @endif
         <h1 class="my-4">{{$post->title}}
         </h1>
 

@@ -48,18 +48,8 @@ Route::get('/404', function (){
 })->name('404');
 
 //email subscription
-//Route::get('/mail_subscription', Controllers\MailSubscriptionController::class )->name('mail_subscription');
-Route::get('/send_mail', function (){
-    $mail = new \App\Mail\UserSubscription();
-    $mail->subject('Добро пожаловать');
-    Mail::to('Sechenova93@gmail.com')->send($mail);
-});
 
-Route::post('/subscription', function (\Illuminate\Http\Request $request){
-    $mail = new \App\Mail\UserSubscription();
-    $mail->subject('Добро пожаловать');
-    Mail::to($request>info('mail'))->send($mail);
-})->name('subscription');
+Route::post('/subscription', Controllers\MailSubscriptionController::class)->name('subscription');
 
 //Auth
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -47,13 +47,13 @@
                 </div>
                     <br>
                 <div class="flex col-3">
-                    <label style="padding-bottom: 18px; width: 600px;">
-                        <input style="width: 600px; padding: 8px" type="text" placeholder="title" name="title">
-                    </label>
                     <input style="padding-bottom: 18px;" type="file" name="image">
-                    <label >
+                    <br>
+                    <input style="width: 600px; padding: 8px" type="text" placeholder="title" name="title">
+                    <br>
+                    <br>
                     <code> <textarea style="padding-bottom: 18px; width: 600px; height: 300px;" class="form-control" name="body"></textarea></code>
-                    </label>
+                    <br>
                     <button type="submit" class="btn-blue btn btn-primary"> Добавить</button>
                 </div>
             </form>
