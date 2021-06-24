@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
+
     public function add(){
         $authors = Author::all();
         $categories = Category::all();
@@ -41,12 +42,13 @@ class AdminPostsController extends Controller
                 if($image){
                     $imageName = $image->getClientOriginalName();
                     $image->move('images', $imageName);
-                    $post->image = 'http://localhost:8888/images' . $imageName;
+                    $post->image = 'http://localhost:8888/images/' . $imageName;
                 }
                 $post->save();
 
-                $post->category()->sync($request->input('category_id'), false);
+                $post->category()->attach($request->input('category_id'), );
                 $post->category()->getRelated();
+
                 $log = new Logger('new_log');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
                 $log->info('Monolog: Пост № '. $post->id .' был добавлен пользователем ' . Auth::user()->name);
@@ -66,10 +68,12 @@ class AdminPostsController extends Controller
         if(Auth::check()){
             $post = Post::where('id', '=', $id)->first();
             $authors = Author::all();
+            $categories = Category::all();
 
             return view('admin.edit_post', [
                 'post'=>$post,
-                'authors'=>$authors
+                'authors'=>$authors,
+                'categories'=>$categories
             ]);
         }else{
             return redirect('404');
@@ -96,6 +100,11 @@ class AdminPostsController extends Controller
                     $post->image = 'http://localhost:8888/images/' . $imageName;
                 }
                 $post->save();
+
+                $post->category()->getRelated();
+                $post->category()->sync($request->input('category_id'));
+                $post->category()->getRelated();
+
                 $log = new Logger('new_log');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
                 $log->info('Monolog: Пост № '. $post->id .' был изменен пользователем ' . Auth::user()->name);
@@ -117,6 +126,7 @@ class AdminPostsController extends Controller
             if ($request->method() == 'DELETE') {
                 $post = Post::find($request->input('id'));
                 $post->delete();
+
                 $log = new Logger('new_log');
                 $log->pushHandler(new StreamHandler(__DIR__ . '/../../../Logs/new_post_log.log',Logger::INFO));
                 $log->info('Monolog: Пост № '. $post->id .' был удален пользователем ' . Auth::user()->name);
@@ -124,7 +134,10 @@ class AdminPostsController extends Controller
                 $k_log->info('Katzgrau: Пост № '. $post->id .' был удален пользователем ' . Auth::user()->name );
                 return back();
             } else {
-                return view('admin.admin_panel', ['posts' => Post::orderBy('updated_at', 'DESC')->paginate(8)]);
+                return view('admin.admin_panel', [
+                    'posts' => Post::orderBy('updated_at', 'DESC')
+                        ->paginate(8)
+                ]);
             }
 
         }else{

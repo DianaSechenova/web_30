@@ -45,4 +45,9 @@
         </ul>
 
     </div>
+
+@endsection
+
+@section('side_bar')
+    @include('sidebar')
 @endsection

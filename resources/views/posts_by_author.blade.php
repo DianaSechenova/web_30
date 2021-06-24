@@ -43,6 +43,10 @@
                 <a class="page-link" href="#">Newer &rarr;</a>
             </li>
         </ul>
-
     </div>
+
+@endsection
+
+@section('side_bar')
+    @include('sidebar')
 @endsection

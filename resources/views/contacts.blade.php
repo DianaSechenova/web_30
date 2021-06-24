@@ -28,3 +28,22 @@
                 })();</script><a href="https://1map.com/ru/map-embed">1 Map</a></div>
     </div>
 @endsection
+@section('side_bar')
+    <div class="card my-4" style="height: 350px">
+        {{--                @inject('networks', "App\Models\Network")--}}
+        <h5 class="card-header">Мы в соцсетях</h5>
+        <div class="card-body" >
+            <a href="#"><img src="/icon/i.png"></a>
+            <a href="#"><img src="/icon/f.png"></a>
+            <a href="#"><img src="/icon/t.png"></a>
+            <a href="#"><img src="/icon/g.png"></a>
+
+            {{--                    <ul>--}}
+            {{--                    @foreach($networks as $network)--}}
+            {{--                        <li>{{$network->name}}</li>--}}
+            {{--                        <li>{{$network->link}}</li>--}}
+            {{--                    @endforeach--}}
+            {{--                    </ul>--}}
+        </div>
+    </div>
+@endsection

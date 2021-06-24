@@ -38,13 +38,13 @@
                 <div style="display: flex; flex-direction: column;">
                     @foreach($categories as $category)
                         <div>
-                            <input type="checkbox"  value="{{$category->id}}" id="scales" name="category_id" >
+                            <input type="checkbox"  value="{{$category->id}}" id="scales" name="category_id[]" >
                             <label for="scales">
                                 {{$category->title}}
                             </label>
                         </div>
                     @endforeach
-                </div>
+
                     <br>
                 <div class="flex col-3">
                     <input style="padding-bottom: 18px;" type="file" name="image">

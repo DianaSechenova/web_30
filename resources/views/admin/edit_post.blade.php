@@ -36,18 +36,18 @@
                 <br>
                 <br>
                 <br>
-{{--                <p style="font-size: 20px;">Выберите категорию:</p>--}}
-{{--                <div style="display: flex; flex-direction: column;">--}}
-{{--                    @foreach($categories as $category)--}}
-{{--                        <div>--}}
-{{--                            <input type="checkbox"  value="{{$category->id}}" id="scales" name="category_id" >--}}
-{{--                            <label for="scales">--}}
-{{--                                {{$category->title}}--}}
-{{--                            </label>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--                <br>--}}
+                <p style="font-size: 20px;">Выберите категорию:</p>
+                <div style="display: flex; flex-direction: column;">
+                    @foreach($categories as $category)
+                        <div>
+                            <input type="checkbox"  value="{{$category->id}}" id="scales" name="category_id[]" >
+                            <label for="scales">
+                                {{$category->title}}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                <br>
                 <div class="flex col-3">
                     <input type="hidden" name="id" value="{{$post->id}}">
                     <label style="padding-bottom: 18px; width: 600px;">

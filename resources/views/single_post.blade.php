@@ -60,4 +60,9 @@
         <p>Зарегестрируйтесь, и оставляйте комментарии!</p>
             @endif
     </div>
+
+@endsection
+
+@section('side_bar')
+    @include('sidebar')
 @endsection
