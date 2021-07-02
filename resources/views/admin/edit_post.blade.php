@@ -40,7 +40,12 @@
                 <div style="display: flex; flex-direction: column;">
                     @foreach($categories as $category)
                         <div>
-                            <input type="checkbox"  value="{{$category->id}}" id="scales" name="category_id[]" >
+                            <input
+                                type="checkbox"
+                                value="{{$category->id}}"
+                                id="scales"
+                                name="category_id[]"
+                                @if($post->category->contains($category)) checked @endif>
                             <label for="scales">
                                 {{$category->title}}
                             </label>
