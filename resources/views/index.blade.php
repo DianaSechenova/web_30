@@ -6,7 +6,11 @@
 
     <!-- Blog Entries Column -->
     <div class="col-md-8">
-
+        @if(\Illuminate\Support\Facades\Session::has('flash'))
+            <br>
+            <h2><mark>{{\Illuminate\Support\Facades\Session::get('flash')}}</mark></h2>
+            <br>
+        @endif
         <h1 class="my-4">Page Heading
             <small>Secondary Text</small>
         </h1>
@@ -19,7 +23,9 @@
                 <h2 class="card-title">{{$post->title}}</h2>
                 <p class="card-text">{{mb_substr($post->body, 0, 200)}} ...</p>
                 <a href="{{route('single_post', $post->id)}}" class="btn btn-primary">Читать далее &rarr;</a>
+                <a href="{{route('add_to_cart', $post->id)}}"  class="btn btn-light">Добавить</a>
             </div>
+{{--            --}}
             <div class="card-footer text-muted">
                 Опубликовано {{date('d F Y в G:i',strtotime($post->created_at))}}<div style="float: right">Автор
                 <a href="{{route('post_by_author', $post->author->key)}}"> {{$post->author->name}}</a></div>

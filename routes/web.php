@@ -55,3 +55,11 @@ Route::post('/subscription', Controllers\MailSubscriptionController::class)->nam
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//cart actions
+Route::get('/cart/add_to_cart/{id}', 'App\Http\Controllers\CartAction@add')->name('add_to_cart');
+Route::get('/cart', 'App\Http\Controllers\CartAction@show')->name('cart');
+Route::get('/cart/delete/{id}', 'App\Http\Controllers\CartAction@delete')->name('delete_from_cart');
+Route::post('/cart/update', 'App\Http\Controllers\CartAction@update')->name('update_cart');
+
+

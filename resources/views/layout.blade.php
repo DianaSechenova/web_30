@@ -14,7 +14,24 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/blog-home.css" rel="stylesheet">
-
+<style>
+    .glow-button {
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px 40px #6f42c1 inset, 0 0 0 0 #6f42c1;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: white;
+        transition: .15s ease-in-out;
+    }
+    .glow-button:hover {
+        box-shadow: 0 0 10px 0 #6f42c1 inset, 0 0 10px 4px #6f42c1;
+        color: #6f42c1;
+    }
+</style>
 </head>
 
 <body>
@@ -42,6 +59,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contacts')}}">Контакты</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('cart')}}"><img src="/icon/cart2.png"></a>
+                </li>
+
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admin_panel_get')}}">Администрирование</a>
