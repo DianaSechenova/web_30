@@ -20,16 +20,16 @@
         display: inline-block;
         padding: 10px 20px;
         border-radius: 10px;
-        box-shadow: 0 0 40px 40px #6f42c1 inset, 0 0 0 0 #6f42c1;
+        box-shadow: 0 0 1px 0 #6f42c1;
         font-family: 'Montserrat', sans-serif;
         font-weight: bold;
         letter-spacing: 2px;
-        color: white;
+        color: #6f42c1;
         transition: .15s ease-in-out;
     }
     .glow-button:hover {
-        box-shadow: 0 0 10px 0 #6f42c1 inset, 0 0 10px 4px #6f42c1;
-        color: #6f42c1;
+        box-shadow: 0 0 40px 40px #6f42c1 inset, 0 0 0 0 #6f42c1;
+        color: white;
     }
 </style>
 </head>

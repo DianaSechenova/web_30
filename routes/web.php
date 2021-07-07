@@ -45,7 +45,7 @@ Route::delete('/admin/admin_panel', 'App\Http\Controllers\AdminPostsController@d
 
 Route::get('/404', function (){
     return view('404');
-})->name('404');
+    })->name('404');
 
 //email subscription
 
@@ -61,5 +61,10 @@ Route::get('/cart/add_to_cart/{id}', 'App\Http\Controllers\CartAction@add')->nam
 Route::get('/cart', 'App\Http\Controllers\CartAction@show')->name('cart');
 Route::get('/cart/delete/{id}', 'App\Http\Controllers\CartAction@delete')->name('delete_from_cart');
 Route::post('/cart/update', 'App\Http\Controllers\CartAction@update')->name('update_cart');
+Route::get('/cart/checkout',  function (){
+    return view('checkout');
+    })->name('checkout');
+Route::post('/cart/checkout', Controllers\OrderController::class)->name('checkout');
+Route::get('/order/{id}', Controllers\OrderReceivedController::class)->name('order');
 
 
